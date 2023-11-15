@@ -1,0 +1,44 @@
+Objectif:
+L'objectif de cette application web est de permettre à un magasin spécialisé dans l'importation de marchandises de Chine et leur revente de gérer efficacement ses opérations, y compris la gestion des produits, du stock, des fournisseurs, des factures, des clients et des réservations.
+
+Fonctionnalités Principales:
+
+1. Gestion des Produits et Catégories
+Ajouter, modifier et supprimer des produits avec des informations détaillées (nom, description, prix, etc.).
+Assigner chaque produit à une catégorie pertinente.
+Rechercher et filtrer les produits par catégorie, nom, etc.
+
+2. Gestion du Stock
+Suivre les niveaux de stock en temps réel.
+Recevoir des alertes en cas de niveaux de stock bas.
+Historique des mouvements de stock (entrées, sorties, ajustements).
+
+3. Gestion des Fournisseurs
+Enregistrer les informations des fournisseurs (nom, adresse, contact, etc.).
+Associer chaque fournisseur à son type de produit spécifique (électronique, vêtements, etc.).
+Vue d'ensemble des produits fournis par chaque fournisseur.
+
+4. Gestion des Factures
+Créer des factures pour les clients suite à des achats.
+Les factures doivent pouvoir être modifiées et supprimées.
+Enregistrer les factures des fournisseurs pour les marchandises importées.
+Les factures doivent pouvoir être générées.
+Les factures doivent pouvoir être exportées au format PDF.
+
+
+5. Gestion des Clients
+Ajouter, modifier et supprimer des informations clients.
+Suivre l'historique des achats de chaque client.
+Enregistrer les réservations faites par les clients.
+
+6. Réservations de produits
+Permettre aux clients de réserver des produits.
+Aviser les utilisateurs lorsque les produits réservés sont prêts à être récupérés.
+Historique des réservations pour chaque client.
+Les réservations doivent pouvoir être modifiées et supprimées.
+
+
+
+
+
+
