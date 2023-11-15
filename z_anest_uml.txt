@@ -1,0 +1,27 @@
+Product and Category
+Many-to-Many
+Product and Stock
+One-to-One
+Product and Supplier
+Many-to-Many
+Product and Reservation
+Many-to-Many 
+Client and Reservation
+One-to-Many
+Client and Invoice
+One-to-Many
+Supplier and Invoice
+One-to-Many
+Client and Cart
+One-to-Many 
+---------------------------------------
+
+Product(ProductID, Name, Description, Price, CategoryID, StockID,Image)
+Category(CategoryID, Name, Description,Image)
+Stock(ProductID, Quantity)
+Supplier(SupplierID, Name, Address, PhoneNumber) 
+SupplierProductType(SupplierID,CategoryID)
+Invoice(InvoiceID, Date, ClientID, SupplierID, TotalAmount, InvoiceType (Purchase/Sale), Status)
+User( ClientID, FirstName, LastName,Address, Number, Email,Password,Role)
+Reservation(ReservationID, ClientID, ProductID, Quantity, Status)
+Cart(CartID, ClientID, ProductID, Quantity)
