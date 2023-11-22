@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/in', function () {
+//     return view('sign-in-up.sign_in');
+// });
+// Route::get('/up', function () {
+//     return view('sign-in-up.sign_up');
+// });
 Route::get('/', function () {
     return view('test');
 });
+
 
