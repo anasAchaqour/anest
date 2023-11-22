@@ -18,12 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'nom',
-        'prenom',
+        'name',
+        'lastName',
         'role',
-        'per_pic',
+        'user_picc',
         'email',
         'password',
+        'adress',
     ];
 
     /**
@@ -46,13 +47,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function clients()
+
+
+    public function client()
     {
-        return $this->hasMany(Client::class);
+        return $this->hasOne(Client::class);
     }
 
-    public function admins()
+    public function warehouseStaff()
     {
-        return $this->hasMany(Admin::class);
+        return $this->hasOne(warehouseStaff::class);
     }
+
+
 }
