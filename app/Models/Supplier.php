@@ -24,4 +24,9 @@ class Supplier extends Model
     {
         return $this->hasMany(Invoice::class);
     }
+
+    public function supplierProductTypes()
+    {
+        return $this->hasMany(SupplierProductType::class);
+    }
 }
