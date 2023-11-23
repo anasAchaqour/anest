@@ -17,13 +17,12 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->unsigned();
             $table->string('name');
             $table->string('description')->nullable();
-            // $table->decimal('price', 10, 2);
-            $table->decimal('price');
+            $table->decimal('price', 10, 2);
             $table->integer('stock');
             $table->string('pro_pic')->nullable();
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
 
         });
     }

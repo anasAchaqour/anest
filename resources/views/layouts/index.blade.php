@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap/dataTables.bootstrap5.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> --}}
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="assets/css/bootstrap/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <title> @yield('title', 'index') </title>
@@ -70,7 +70,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-3 active">
+                        <a href="/" class="nav-link px-3 active" >
                             <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                             <span>Dashboard</span>
                         </a>
@@ -103,10 +103,50 @@
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-flower1"></i></i></span>
+                                        <span>Categories</span>
+                                    </a>
+                                </li>
+                                {{-- <li>
+                                    <a href="#" class="nav-link px-3">
                                         <span class="me-2"><i class="bi bi-shop-window"></i></i></span>
                                         <span>Inventory</span>
                                     </a>
+                                </li> --}}
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#cats">
+                            <span class="me-2"><i class="bi bi-flower1"></i></span>
+                            <span>Categories</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="cats">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/categories" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-calculator-fill"></i></i></span>
+                                        <span>List of Categories</span>
+                                    </a>
                                 </li>
+                                <li>
+                                    <a href="#" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-list-ol"></i></i></span>
+                                        <span>Product per Category</span>
+                                    </a>
+                                </li>
+                                {{-- <li>
+                                    <a href="#" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-shop-window"></i></i></span>
+                                        <span>Inventory</span>
+                                    </a>
+                                </li> --}}
                             </ul>
                         </div>
                     </li>

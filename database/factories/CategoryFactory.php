@@ -18,6 +18,11 @@ class CategoryFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->unique()->word,
+            'description' => $this->faker->sentence,
+            // 'cat_pic' => $this->faker->imageUrl(), // Replace with appropriate logic for category pictures
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

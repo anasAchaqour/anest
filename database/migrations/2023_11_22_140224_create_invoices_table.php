@@ -22,8 +22,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
 
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 
