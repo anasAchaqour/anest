@@ -96,7 +96,7 @@
                         <div class="collapse" id="layouts">
                             <ul class="navbar-nav ps-3">
                                 <li>
-                                    <a href="#" class="nav-link px-3">
+                                    <a href="/products" class="nav-link px-3">
                                         <span class="me-2"><i class="bi bi-calculator-fill"></i></i></span>
                                         <span>Manage Products</span>
                                     </a>

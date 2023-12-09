@@ -27,3 +27,6 @@ Route::get('/', function () {
 
 
 Route::resource('/categories', CategoryController::class);
+Route::get('/products', function () {
+    return view('products.index');
+});
