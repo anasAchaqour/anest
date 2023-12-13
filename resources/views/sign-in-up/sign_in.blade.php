@@ -21,7 +21,7 @@
 
     <div class="main">
 
-        
+
 
 
         <!-- Sing in  Form -->
@@ -50,8 +50,7 @@
                                     me</label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit"
-                                    value="Log in" />
+                                <a href="/"><button class="bn30" type="submite">Sign In</button></a>
                             </div>
                         </form>
                         <div class="social-login">

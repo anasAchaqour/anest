@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Models\category;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::get('/', function () {
 
 
 Route::resource('/categories', CategoryController::class);
-Route::get('/products', function () {
-    return view('products.index');
-});
+
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::post('/products/create', [ProductController::class, 'store']);
+
+

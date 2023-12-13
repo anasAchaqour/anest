@@ -51,8 +51,7 @@
                                     statements in <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit"
-                                    value="Register" />
+                                <a href="/"><button class="bn30" type="submite">Register</button></a>
                             </div>
                         </form>
                     </div>
@@ -64,7 +63,7 @@
             </div>
         </section>
 
-        
+
 
 
     </div>

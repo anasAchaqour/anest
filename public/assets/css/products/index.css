@@ -3,7 +3,8 @@
     padding: 10px;
     border-radius: 5px;
     text-align: center;
-    width: 200px; /* Adjust the width as needed */
+    width: 200px;
+    /* Adjust the width as needed */
 }
 
 /* Style for the category label */
@@ -18,6 +19,7 @@
     font-size: 16px;
     color: #666;
 }
+
 section {
     padding-bottom: 20px;
     display: flex;
@@ -32,7 +34,9 @@ section {
     -webkit-box-shadow: 0px 11px 11px -8px rgba(0, 0, 0, 0.68);
     -moz-box-shadow: 0px 11px 11px -8px rgba(0, 0, 0, 0.68);
 }
-
+.card2{
+    background-color: #000a9481;
+}
 .search-input {
     display: flex;
     background-color: #f7f9fc;
@@ -40,6 +44,7 @@ section {
     border-radius: 8px;
     padding: 10px;
 }
+
 .custom-select {
     background-color: #f7f9fc;
     border: 1px solid #ccc;
@@ -50,20 +55,43 @@ section {
 }
 
 /* //////////// */
-.main
-{
+.main {
     justify-content: space-around;
 }
-.side1
-{
+
+
+
+.side1 {
     background-color: #f7f7f7;
-    padding: 14px;
-    width: 50%;
+    padding: 20px;
+    width: 70%;
     margin-right: 2px;
+
+    border-radius: 18px;
+    background: #f2f2f2;
+    box-shadow: 14px 14px 28px #e3e3e3,
+        -14px -14px 28px #ffffff;
 }
-.side2
-{
-    padding: 14px;
+
+.side1 .card-img-top {
+    text-align: center;
+    width: 70%;
+    height: 70%;
+}
+
+.side1 .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.side1 .card .card-footer{
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.side2 {
+    /* padding: 14px;
     width: 50%;
     margin-left: 2px;
     justify-content: space-around;
@@ -73,22 +101,23 @@ section {
 
 border-radius: 5px 0px 0px 5px;
 -webkit-border-radius: 5px 0px 0px 5px;
--moz-border-radius: 5px 0px 0px 5px;
+-moz-border-radius: 5px 0px 0px 5px; */
 }
-.table1
-{
-    padding: 14px;
+
+.table1 {
+    /* padding: 14px;
     width: 50%;
-    margin-right: 2px;
+    margin-right: 2px; */
 }
-.table2
-{
-    padding: 14px;
+
+.table2 {
+    /* padding: 14px;
     width: 50%;
-    margin-left: 2px;
+    margin-left: 2px; */
 }
-.tables{
-    border-radius: 0px 0px 8px 8px;
+
+.tables {
+    /* border-radius: 0px 0px 8px 8px;
 -webkit-border-radius: 0px 0px 8px 8px;
--moz-border-radius: 0px 0px 8px 8px;
+-moz-border-radius: 0px 0px 8px 8px; */
 }

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
+use App\Models\category;
+use App\Models\Supplier;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -14,6 +18,14 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $products = product::all();
+        $categories = category::all();
+        $suppliers = Supplier::all();
+        return view('products.index', [
+            'products' => $products,
+            'categories' => $categories,
+            'suppliers' => $suppliers
+        ]);
     }
 
     /**
@@ -27,9 +39,36 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreproductRequest $request)
+    public function store(Request $request)
     {
         //
+
+
+        $validatedData = $request->validate([
+            'name' => 'bail|required|string',
+            'description' => 'bail|required|string',
+            'price' => 'bail|required|numeric',
+            'stock' => 'bail|required|numeric',
+            'pro_pic' => 'bail',
+            'category_id' => 'required|numeric',
+            'supplier_id' => 'bail|required|numeric'
+        ]);
+        /*****************************************************************/
+
+
+        product::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'stock' => $request->input('stock'),
+            'pro_pic' => $request->input('pro_pic'),
+            'category_id' => $request->input('category_id'),
+            'supplier_id' => $request->input('supplier_id'),
+        ]);
+
+        
+
+        return redirect('/products')->with('success', 'product added successfully.');
     }
 
     /**
