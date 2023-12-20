@@ -15,14 +15,17 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public $byCategorie = null;
+    public $bySupplier = null;
+    public $orderBy = 'name';
+    public $perPage = 5;
+    public $search;
+
     public function index()
     {
-        //
-        $products = product::all();
         $categories = category::all();
         $suppliers = Supplier::all();
         return view('products.index', [
-            'products' => $products,
             'categories' => $categories,
             'suppliers' => $suppliers
         ]);
@@ -66,7 +69,7 @@ class ProductController extends Controller
             'supplier_id' => $request->input('supplier_id'),
         ]);
 
-        
+
 
         return redirect('/products')->with('success', 'product added successfully.');
     }

@@ -1,6 +1,8 @@
 @extends('layouts.index')
 @section('content')
     <link rel="stylesheet" href="assets/css/products/index.css">
+    @livewireStyles
+
 
 
     <div class="row ">
@@ -147,78 +149,11 @@
 
     <div class="main d-flex">
         <div class="side1">
-
-            <div>
-                <span class="badge rounded-pill bg-dark mb-2 fs-6 w-100">Here you can filter the products</span>
-                <div class="d-flex mb-2" style="">
-                    <div class="search-input w-100">
-                        <i class="fas fa-search fa-lg text-primary me-2"></i>
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
-                    </div>
-
-                </div>
-                <div class="d-flex justify-content-around  mb-2">
-                    <div class="">
-                        <select class="custom-select">
-                            <option selected>Categories</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                    </div>
-                    <div class="">
-                        <select class="custom-select">
-                            <option selected>Suppliers</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3 card-group p-2">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    @foreach ($products as $product)
-                        {{-- <div class="card">
-                            <img src="assets/images/preview.png" class="card-img-top p-2" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->name }} </h5>
-                                <h6 class="d-flex justify-content-between"><span
-                                        class="badge bg-secondary">{{ $product->price }} $</span> <u>{{ $product->stock }}
-                                        pcs</u></h6>
-                                <p class="card-text">{{ $product->description }}</p>
-                            </div>
-                            <div class="card-footer" style="text-align: center">
-                                <small class="text-muted"><a href="##">Delete</a> <a
-                                        href="#">Edite</a></small>
-                            </div>
-                        </div> --}}
-
-                        <div class="col">
-                            <div class="card">
-                                <img src="assets/images/preview.png" class="card-img-top" alt="...">
-                                <div class="card-body" style="border-top: 2px solid #838383c4; margin-top: 10px;">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <h6 class="d-flex justify-content-between"><span
-                                            class="badge bg-secondary">{{ $product->price }} $</span>
-                                        <u>{{ $product->stock }}
-                                            pcs</u>
-                                    </h6>
-                                    <p class="card-text">{{ $product->description }}</p>
-                                </div>
-                                <div class="card-footer" style="text-align: center">
-                                    <small class="text-muted"><a href="##">Delete</a> <a
-                                            href="#">Edite</a></small>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-
+            @livewire('filter-products')
         </div>
-        {{-- /////// --}}
     </div>
+
+
+
+    @livewireScripts
 @endsection

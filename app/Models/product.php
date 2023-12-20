@@ -40,4 +40,5 @@ class product extends Model
     {
         return $this->hasMany(CartProduct::class);
     }
+
 }

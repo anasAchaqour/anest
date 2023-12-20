@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <title> @yield('title', 'index') </title>
+    <livewire:styles />
 
 </head>
 
@@ -70,7 +71,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="/" class="nav-link px-3 active" >
+                        <a href="/" class="nav-link px-3 active">
                             <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                             <span>Dashboard</span>
                         </a>
@@ -240,6 +241,8 @@
     <script src="assets/js/bootstrap-jq/jquery.dataTables.min.js"></script>
     <script src="assets/js/bootstrap-jq/dataTables.bootstrap5.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <livewire:scripts />
+    
 </body>
 
 </html>

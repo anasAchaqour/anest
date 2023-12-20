@@ -1,5 +1,5 @@
 <?php
-
+use Livewire\Livewire;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Models\category;
