@@ -8,7 +8,10 @@
                 <input type="text" wire:model.debounce.lazy="query" id="query" class="form-control"
                     placeholder="Search For a Product...">
                 <button class="btn btn-primary" type="button"><i class="bi bi-search"></i>
+
             </div>
+
+
 
         </div>
         <div class="d-flex justify-content-around  mb-2 filter">
@@ -28,7 +31,7 @@
                 </select>
             </div>
             <div class="">
-                <select wire:model='bySupplier' id="bySupplier" class="custom-select">
+                <select wire:model.lazy='bySupplier' id="bySupplier" class="custom-select">
                     <option selected>Suppliers</option>
                     @foreach ($suppliers as $supplier)
                         <option value="{{ $supplier->id }}">
@@ -47,16 +50,33 @@
                 </select>
             </div>
 
-            {{-- <div class="">
-                <b>show</b>
-                <select wire:model.lazy='perPage' id="perPage" class="custom-select w-auto">
-                    <option value="9" selected>9</option>
-                    <option value="12">12</option>
-                    <option value="15">15</option>
-                    <option value="18">18</option>
-                </select>
-                <b>Per Page</b>
-            </div> --}}
+            <div>
+                {{-- <button type="button" class="btn btn-primary">
+                    <b>show</b>
+                    <select wire:model.lazy='perPage' id="perPage" class="custom-select w-auto">
+                        <option value="6">6</option>
+                        <option value="9" selected>9</option>
+                        <option value="12">12</option>
+                        <option value="15">15</option>
+                        <option value="18">18</option>
+                    </select>
+                    <b>Per Page</b>
+
+                </button> --}}
+                <div class="select-container p-1" >
+                    <label for="perPage" class="select-label">Show</label>
+                    <select wire:model.lazy="perPage" id="perPage" class="custom-select w-auto">
+                        <option value="6">6</option>
+                        <option value="9" selected>9</option>
+                        <option value="12">12</option>
+                        <option value="15">15</option>
+                        <option value="18">18</option>
+                    </select>
+                    Per Page
+                </div>
+            </div>
+
+
         </div>
 
     </div>
@@ -88,8 +108,35 @@
             @endforeach
         </div>
         <div style="margin: auto ; margin-top: 70px;">
-            {{ $products->onEachSide(1)->links('pagination::bootstrap-5') }}
+            {{-- {{ $products->links('pagination::bootstrap-5', ['paginator' => $products]) }} --}}
+            <a wire:click="load" class="btn btn-primary">Load more...</a>
+
         </div>
     </div>
     {{-- end show products --}}
+
+
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var resetSearchButton = document.getElementById('resetS');
+
+            resetSearchButton.addEventListener('click', function () {
+                resetFilters();
+            });
+
+            function resetFilters() {
+                document.getElementById('query').value = '';
+                document.getElementById('byCategory').value = 'Categories'; // Reset to the default option
+                document.getElementById('bySupplier').value = 'Suppliers'; // Reset to the default option
+            }
+
+            // Optional: You can also call the resetFilters function on page load or initialization
+            resetFilters();
+        });
+    </script> --}}
+    <script>
+        document.getElementById('resetS').addEventListener('click', function() {
+            location.reload(true); // Pass true to force a reload from the server and not from the browser cache
+        });
+    </script>
 </div>

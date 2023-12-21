@@ -242,7 +242,9 @@
     <script src="assets/js/bootstrap-jq/dataTables.bootstrap5.min.js"></script>
     <script src="assets/js/script.js"></script>
     <livewire:scripts />
-    
+    <script src="{{ asset('vendor/livewire/livewire.js') }}" defer></script>
+
+
 </body>
 
 </html>

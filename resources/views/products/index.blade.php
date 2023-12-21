@@ -1,6 +1,7 @@
 @extends('layouts.index')
 @section('content')
     <link rel="stylesheet" href="assets/css/products/index.css">
+
     @livewireStyles
 
 

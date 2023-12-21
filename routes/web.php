@@ -30,7 +30,8 @@ Route::get('/', function () {
 Route::resource('/categories', CategoryController::class);
 
 
-Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+
 Route::post('/products/create', [ProductController::class, 'store']);
 
 
