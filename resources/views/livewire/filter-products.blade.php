@@ -63,7 +63,7 @@
                     <b>Per Page</b>
 
                 </button> --}}
-                <div class="select-container p-1" >
+                <div class="select-container p-1">
                     <label for="perPage" class="select-label">Show</label>
                     <select wire:model.lazy="perPage" id="perPage" class="custom-select w-auto">
                         <option value="6">6</option>
@@ -91,6 +91,8 @@
                 <div class="col">
                     <div class="card">
                         <img src="assets/images/preview.png" class="card-img-top" alt="...">
+                        {{-- <img src="{{ asset('images/products/' . $product->pro_pic) }}" alt="image"
+                            class="img-thumbnail" style="width: 60px;" height="100px"> --}}
                         <div class="card-body" style="border-top: 2px solid #838383c4; margin-top: 10px;">
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <h6 class="d-flex justify-content-between"><span
@@ -101,7 +103,36 @@
                             <p class="card-text">{{ $product->description }}</p>
                         </div>
                         <div class="card-footer" style="text-align: center">
-                            <small class="text-muted"><a href="##">Delete</a> <a href="#">Edite</a></small>
+                            {{-- <small class="text-muted"><a href="/products/delete/{{ $product->id }}">Delete</a> <a href="#">Edite</a></small> --}}
+                            <small class="text-muted"><a title=" Delete " href="#" data-bs-toggle="modal"
+                                    data-bs-target="#delConfirmation">Delete</a> <a href="#">Edite</a></small>
+                            <!-- Modal confirmation delete -->
+                            <div class="modal fade" id="delConfirmation" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this categorie ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-danger"
+                                                onclick="redirectToNewPage({{ $product->id }})">Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Modal confirmation delete -->
                         </div>
                     </div>
                 </div>
@@ -116,11 +147,13 @@
     {{-- end show products --}}
 
 
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
+
+    <script>
+        //_________________________________ clear inputs after clickin reset
+        document.addEventListener('DOMContentLoaded', function() {
             var resetSearchButton = document.getElementById('resetS');
 
-            resetSearchButton.addEventListener('click', function () {
+            resetSearchButton.addEventListener('click', function() {
                 resetFilters();
             });
 
@@ -133,10 +166,22 @@
             // Optional: You can also call the resetFilters function on page load or initialization
             resetFilters();
         });
-    </script> --}}
-    <script>
+
+
+        //_________________________________ delete link for the modal button
+        function redirectToNewPage(id) {
+            // Specify the URL of the new page
+            var newPageUrl = '/products/delete/' + id;
+            // Redirect to the new page
+            window.location.href = newPageUrl;
+        }
+
+
+    </script>
+
+    {{-- <script>
         document.getElementById('resetS').addEventListener('click', function() {
             location.reload(true); // Pass true to force a reload from the server and not from the browser cache
         });
-    </script>
+    </script> --}}
 </div>

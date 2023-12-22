@@ -45,3 +45,24 @@ $(document).ready(function () {
     $(table).DataTable();
   });
 });
+
+
+//_________________________________ go to top button
+document.addEventListener('DOMContentLoaded', function () {
+    var scrollToTopElement = document.getElementById('scrollToTopElement');
+
+    // Show or hide the button based on scroll position
+    window.onscroll = function () {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopElement.style.display = 'block';
+        } else {
+            scrollToTopElement.style.display = 'none';
+        }
+    };
+
+    // Scroll to the top when the button is clicked
+    scrollToTopElement.onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    };
+});

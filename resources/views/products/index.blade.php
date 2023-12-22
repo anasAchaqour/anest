@@ -17,6 +17,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        @if (session()->has('successDel'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                style="width: 30%; text-align: center;margin: auto">
+                {{ session('successDel') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
     </div>
 
@@ -76,19 +83,19 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/products/create" method="POST">
+                            <form action='/products/create' method="POST" enctype=”multipart/form-data” >
                                 @csrf
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">name</span>
                                     <input type="text" class="form-control" placeholder="enter the title"
-                                        aria-label="Username" aria-describedby="basic-addon1" name="name">
+                                        aria-label="Username" aria-describedby="basic-addon1" name="name" required>
                                 </div>
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Description</span>
-                                    <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
+                                    <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
                                 </div>
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -96,7 +103,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">$</span>
                                     <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                        name="price" placeholder="price">
+                                        name="price" placeholder="price" required>
                                     <span class="input-group-text">.00</span>
                                 </div>
                                 @error('price')
@@ -104,19 +111,20 @@
                                 @enderror
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Stock</span>
-                                    <input type="number" class="form-control" placeholder="enter the Stocke" aria-label=""
-                                        aria-describedby="basic-addon1" name="stock">
+                                    <input type="number" class="form-control" placeholder="enter the Stocke"
+                                        aria-label="" aria-describedby="basic-addon1" name="stock" required>
                                 </div>
                                 @error('stock')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="inputGroupFile02" name="pro_pic">
+                                    <input type="file" class="form-control" id="inputGroupFile02" name="pro_pic" >
                                     <label class="input-group-text" for="inputGroupFile02">Upload image</label>
                                 </div>
                                 <div class="d-flex justify-content-around  mb-2">
                                     <div class="">
-                                        <select class="custom-select" name="category_id">
+                                        <select class="custom-select" name="category_id" required>
+                                            <option selected>Categories</option>
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }}">
                                                     {{ $categorie->name }} </option>
@@ -124,7 +132,8 @@
                                         </select>
                                     </div>
                                     <div class="">
-                                        <select class="custom-select" name="supplier_id" style="margin-bottom: 20px">
+                                        <select class="custom-select" name="supplier_id" style="margin-bottom: 20px" required>
+                                            <option selected>Suppliers</option>
                                             @foreach ($suppliers as $supplier)
                                                 <option value="{{ $supplier->id }}">
                                                     {{ $supplier->id . ' ' . $supplier->name }} </option>
@@ -136,6 +145,7 @@
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Add</button>
+
                                 </div>
                             </form>
                         </div>
@@ -145,6 +155,7 @@
             </div>
         </div>
 
+
         {{-- end modal add new categorie --}}
     </section>
 
@@ -153,8 +164,6 @@
             @livewire('filter-products')
         </div>
     </div>
-
-
 
     @livewireScripts
 @endsection
