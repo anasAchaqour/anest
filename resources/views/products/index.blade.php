@@ -2,6 +2,7 @@
 @section('content')
     <link rel="stylesheet" href="assets/css/products/index.css">
 
+
     @livewireStyles
 
 
@@ -83,47 +84,55 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action='/products/create' method="POST" enctype=”multipart/form-data” >
+                            <form action='/products/create' method="POST" enctype='multipart/form-data'>
                                 @csrf
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1">name</span>
-                                    <input type="text" class="form-control" placeholder="enter the title"
-                                        aria-label="Username" aria-describedby="basic-addon1" name="name" required>
+                                    <span class="input-group-text" id="basic-addon1">Name</span>
+                                    <input type="text"
+                                        class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                        placeholder="Enter the title" name="name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('name')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Description</span>
-                                    <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
+                                    <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" aria-label="With textarea"
+                                        name="description"></textarea>
+                                    @error('description')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('description')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">$</span>
-                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                        name="price" placeholder="price" required>
+                                    <input type="text"
+                                        class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}"
+                                        aria-label="Amount (to the nearest dollar)" name="price" placeholder="price">
                                     <span class="input-group-text">.00</span>
+                                    @error('price')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('price')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">Stock</span>
-                                    <input type="number" class="form-control" placeholder="enter the Stocke"
-                                        aria-label="" aria-describedby="basic-addon1" name="stock" required>
+                                    <input type="number"
+                                        class="form-control {{ $errors->has('stock') ? 'is-invalid' : '' }}"
+                                        placeholder="enter the Stocke" aria-label="" aria-describedby="basic-addon1"
+                                        name="stock">
+                                    @error('stock')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('stock')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="inputGroupFile02" name="pro_pic" >
+                                    <input type="file" class="form-control" id="inputGroupFile02" name="pro_pic">
                                     <label class="input-group-text" for="inputGroupFile02">Upload image</label>
                                 </div>
                                 <div class="d-flex justify-content-around  mb-2">
                                     <div class="">
-                                        <select class="custom-select" name="category_id" required>
+                                        <select class="custom-select" name="category_id">
                                             <option selected>Categories</option>
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }}">
@@ -132,7 +141,7 @@
                                         </select>
                                     </div>
                                     <div class="">
-                                        <select class="custom-select" name="supplier_id" style="margin-bottom: 20px" required>
+                                        <select class="custom-select" name="supplier_id" style="margin-bottom: 20px">
                                             <option selected>Suppliers</option>
                                             @foreach ($suppliers as $supplier)
                                                 <option value="{{ $supplier->id }}">
@@ -145,7 +154,6 @@
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Add</button>
-
                                 </div>
                             </form>
                         </div>
@@ -164,6 +172,10 @@
             @livewire('filter-products')
         </div>
     </div>
+
+    <!-- Include jQuery -->
+
+
 
     @livewireScripts
 @endsection

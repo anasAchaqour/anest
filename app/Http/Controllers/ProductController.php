@@ -46,14 +46,14 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'name' => 'bail|required|string',
-            'description' => 'bail|required|string',
-            'price' => 'bail|required|numeric',
-            'stock' => 'bail|required|numeric',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
             // 'pro_pic' => 'bail|image|mimes:png,jpg,jpeg,svg',
-            'pro_pic' => 'bail',
-            'category_id' => 'required|numeric',
-            'supplier_id' => 'bail|required|numeric',
+            //'pro_pic' => 'bail',
+            'category_id' => 'required',
+            'supplier_id' => 'required',
         ]);
 
         /*****************************************************************/
@@ -61,9 +61,16 @@ class ProductController extends Controller
         // $newImageName = rand(1000, 9999) . '_' . time() . '_' . $request->name . '.' . $request->pro_pic->extension();
         // dd($newImageName);
         // $request->pro_pic->move(public_path('images/products'), $newImageName);
+        // Check if a file was uploaded
 
-        // $newImageName = $request->file('image')->store('product','public');
-        // dd($newImageName);
+        if ($request->hasFile('pro_pic')) {
+            // If a file was uploaded, store it and get the path
+            $newImageName = $request->file('pro_pic')->store('product', 'public');
+        } else {
+            // If no file was uploaded, use the default image path
+            $newImageName = 'product/default.png'; // Adjust the default image filename/path
+        }
+        //dd($newImageName);
         /*****************************************************************/
 
 
@@ -93,7 +100,7 @@ class ProductController extends Controller
         $createNewProduct->description = $request->description;
         $createNewProduct->price = $request->price;
         $createNewProduct->stock = $request->stock;
-        $createNewProduct->pro_pic = $request->pro_pic;
+        $createNewProduct->pro_pic = $newImageName;
         $createNewProduct->category_id = $request->category_id;
         $createNewProduct->supplier_id = $request->supplier_id;
         $createNewProduct->save();
@@ -135,7 +142,15 @@ class ProductController extends Controller
         // if (File::exists($path1)) {
         //     File::delete($path1);
         // }
-        product::find($id)->delete();
-        return redirect('/products')->with('successDel', 'product deleted successfully.');
+        $product = product::findOrFail($id);
+        // Get the image path
+        $imagePath = storage_path('app/public/' . $product->pro_pic);
+        // Check if the file exists before attempting to delete it
+        if (file_exists($imagePath)) {
+            unlink($imagePath); // Delete the file
+        }
+        // Delete the product
+        $product->delete();
+        return redirect('/products')->with('successDel', 'Product deleted successfully.');
     }
 }

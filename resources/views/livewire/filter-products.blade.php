@@ -1,4 +1,7 @@
 <div>
+
+
+
     {{-- filter products --}}
     <div>
         <span class="badge rounded-pill bg-dark mb-2 fs-6 w-100">Here you can filter the products</span>
@@ -89,10 +92,10 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach ($products as $product)
                 <div class="col">
-                    <div class="card">
-                        <img src="assets/images/preview.png" class="card-img-top" alt="...">
+                    <div class="card p-2" style="height: 99%;">
+                        <img src="{{ url('storage/' . $product->pro_pic) }}" class="card-img-top" alt="Product Image">
                         {{-- <img src="{{ asset('images/products/' . $product->pro_pic) }}" alt="image"
-                            class="img-thumbnail" style="width: 60px;" height="100px"> --}}
+                        class="img-thumbnail" style="width: 60px;" height="100px"> --}}
                         <div class="card-body" style="border-top: 2px solid #838383c4; margin-top: 10px;">
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <h6 class="d-flex justify-content-between"><span
@@ -100,12 +103,23 @@
                                 <u>{{ $product->stock }}
                                     pcs</u>
                             </h6>
-                            <p class="card-text">{{ $product->description }}</p>
+                            <hr>
+                            Categorie : <span class="badge bg-secondary m-2 ">
+                                {{ Str::limit($product->category->name, 10) }}</span><br>
+                            Supplier : <span class="badge bg-secondary m-2 ">
+                                {{ Str::limit($product->supplier->name, 10) }}</span><br>
+
+
+                            {{-- <div class="card-text" >{{ $product->description }} </div> --}}
+                            <button type="button" class="btn btn-primary" data-bs-toggle="popover"
+                                title={{ $product->name }} data-bs-content={{ $product->description }}>Product
+                                Description</button>
                         </div>
                         <div class="card-footer" style="text-align: center">
                             {{-- <small class="text-muted"><a href="/products/delete/{{ $product->id }}">Delete</a> <a href="#">Edite</a></small> --}}
                             <small class="text-muted"><a title=" Delete " href="#" data-bs-toggle="modal"
-                                    data-bs-target="#delConfirmation">Delete</a> <a href="#">Edite</a></small>
+                                    data-bs-target="#delConfirmation">Delete</a> <a
+                                    href="/products/{{ $product->id }}/edit">Edite</a></small>
                             <!-- Modal confirmation delete -->
                             <div class="modal fade" id="delConfirmation" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,21 +164,24 @@
 
     <script>
         //_________________________________ clear inputs after clickin reset
-        document.addEventListener('DOMContentLoaded', function() {
-            var resetSearchButton = document.getElementById('resetS');
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var resetSearchButton = document.getElementById('resetS');
 
-            resetSearchButton.addEventListener('click', function() {
-                resetFilters();
-            });
+        //     resetSearchButton.addEventListener('click', function() {
+        //         resetFilters();
+        //     });
 
-            function resetFilters() {
-                document.getElementById('query').value = '';
-                document.getElementById('byCategory').value = 'Categories'; // Reset to the default option
-                document.getElementById('bySupplier').value = 'Suppliers'; // Reset to the default option
-            }
+        //     function resetFilters() {
+        //         document.getElementById('query').value = '';
+        //         document.getElementById('byCategory').value = 'Categories'; // Reset to the default option
+        //         document.getElementById('bySupplier').value = 'Suppliers'; // Reset to the default option
+        //     }
 
-            // Optional: You can also call the resetFilters function on page load or initialization
-            resetFilters();
+        //     // Optional: You can also call the resetFilters function on page load or initialization
+        //     resetFilters();
+        // });
+        document.getElementById('resetS').addEventListener('click', function() {
+            location.reload(true); // Pass true to force a reload from the server and not from the browser cache
         });
 
 
@@ -175,13 +192,7 @@
             // Redirect to the new page
             window.location.href = newPageUrl;
         }
-
-
     </script>
 
-    {{-- <script>
-        document.getElementById('resetS').addEventListener('click', function() {
-            location.reload(true); // Pass true to force a reload from the server and not from the browser cache
-        });
-    </script> --}}
+
 </div>
