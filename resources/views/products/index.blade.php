@@ -25,6 +25,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        @if (session()->has('successUP'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                style="width: 30%; text-align: center;margin: auto">
+                {{ session('successUP') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
     </div>
 

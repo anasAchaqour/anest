@@ -10,6 +10,7 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -127,9 +128,43 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateproductRequest $request, product $product)
+    public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
+            // 'pro_pic' => 'bail|image|mimes:png,jpg,jpeg,svg',
+            //'pro_pic' => 'bail',
+            'category_id' => 'required',
+            'supplier_id' => 'required',
+        ]);
+
+        $product = product::find($id);
+        // Update product image if a new file is provided
+        $oldImagePath = $product->pro_pic;
+        if ($request->pro_pic == null) {
+            $newImageName = $oldImagePath;
+        } else {
+            // Delete the old image
+            if ($oldImagePath != 'product/default.png' && Storage::exists('public/' . $oldImagePath)) {
+                Storage::delete('public/' . $oldImagePath);
+            }
+            $newImageName = $request->file('pro_pic')->store('product', 'public');
+        }
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->pro_pic = $newImageName;
+        $product->category_id = $request->category_id;
+        $product->supplier_id = $request->supplier_id;
+        $product->save();
+
+        return redirect('/products')->with('successUP', 'Product updated successfully.');
     }
 
     /**

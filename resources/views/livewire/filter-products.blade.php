@@ -117,9 +117,16 @@
                         </div>
                         <div class="card-footer" style="text-align: center">
                             {{-- <small class="text-muted"><a href="/products/delete/{{ $product->id }}">Delete</a> <a href="#">Edite</a></small> --}}
-                            <small class="text-muted"><a title=" Delete " href="#" data-bs-toggle="modal"
-                                    data-bs-target="#delConfirmation">Delete</a> <a
-                                    href="/products/{{ $product->id }}/edit">Edite</a></small>
+                            <small class="text-muted">
+                                <a title=" Delete " href="#" data-bs-toggle="modal"
+                                    data-bs-target="#delConfirmation">Delete</a>
+                                {{-- <a href="/products/{{ $product->id }}/edit">Edite</a> --}}
+                                <button type="button"  data-bs-toggle="modal"
+                                    data-bs-target="#editModal{{ $product->id }}"
+                                    style="background: none; border: none; color: #0d6efd; text-decoration: underline; cursor: pointer;"class="link-primary">
+                                    Edit
+                                </button>
+                            </small>
                             <!-- Modal confirmation delete -->
                             <div class="modal fade" id="delConfirmation" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -147,6 +154,102 @@
                                 </div>
                             </div>
                             <!-- end Modal confirmation delete -->
+                            {{-- edite modal --}}
+                            <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true" id="editModal{{ $product->id }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form action='/products/update/{{ $product->id }}' method="POST"
+                                            enctype='multipart/form-data' id="editForm">
+                                            @csrf
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon1">Name</span>
+                                                <input type="text"
+                                                    class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                                    placeholder="Enter the title" name="name"
+                                                    value="{{ $product->name }}">
+                                                @error('name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">Description</span>
+                                                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" aria-label="With textarea"
+                                                    name="description">{{ $product->description }}</textarea>
+                                                @error('description')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">$</span>
+                                                <input type="text"
+                                                    class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}"
+                                                    aria-label="Amount (to the nearest dollar)" name="price"
+                                                    placeholder="price" value="{{ $product->price }}">
+                                                <span class="input-group-text">.00</span>
+                                                @error('price')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon1">Stock</span>
+                                                <input type="number"
+                                                    class="form-control {{ $errors->has('stock') ? 'is-invalid' : '' }}"
+                                                    placeholder="enter the Stocke" aria-label=""
+                                                    aria-describedby="basic-addon1" name="stock"
+                                                    value="{{ $product->stock }}">
+                                                @error('stock')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                                <input type="file" class="form-control" id="inputGroupFile02"
+                                                    name="pro_pic">
+                                                <label class="input-group-text" for="inputGroupFile02">Upload
+                                                    image</label>
+                                            </div>
+                                            <div class="d-flex justify-content-around  mb-2">
+                                                <div class="">
+                                                    <select class="custom-select" name="category_id">
+
+                                                        @foreach ($categories as $categorie)
+                                                            <option value="{{ $categorie->id }}"
+                                                                {{ $categorie->id == $product->category_id ? 'selected' : '' }}>
+                                                                {{ $categorie->name }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="">
+                                                    <select class="custom-select" name="supplier_id"
+                                                        style="margin-bottom: 20px">
+
+                                                        @foreach ($suppliers as $supplier)
+                                                            <option value="{{ $supplier->id }}"
+                                                                {{ $supplier->id == $product->supplier_id ? 'selected' : '' }}>
+                                                                {{ $supplier->id . ' ' . $supplier->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- end edit modal --}}
                         </div>
                     </div>
                 </div>
@@ -193,6 +296,8 @@
             window.location.href = newPageUrl;
         }
     </script>
+
+
 
 
 </div>
