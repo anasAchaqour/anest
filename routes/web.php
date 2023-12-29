@@ -27,13 +27,16 @@ Route::get('/', function () {
 });
 
 
-Route::resource('/categories', CategoryController::class);
 
 
+// products
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::post('/products/create', [ProductController::class, 'store']);
 Route::get('/products/delete/{id}', [ProductController::class, 'destroy']);
 Route::post('/products/update/{id}', [ProductController::class, 'update']);
+
+// categories
+Route::resource('/categories', CategoryController::class);
 
 
 

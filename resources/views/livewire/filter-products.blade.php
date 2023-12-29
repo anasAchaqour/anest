@@ -105,7 +105,7 @@
                             </h6>
                             <hr>
                             Categorie : <span class="badge bg-secondary m-2 ">
-                                {{ Str::limit($product->category->name, 10) }}</span><br>
+                                {{ optional($product->category)->name ? Str::limit($product->category->name, 10) : 'N/A' }}</span><br>
                             Supplier : <span class="badge bg-secondary m-2 ">
                                 {{ Str::limit($product->supplier->name, 10) }}</span><br>
 
@@ -121,7 +121,7 @@
                                 <a title=" Delete " href="#" data-bs-toggle="modal"
                                     data-bs-target="#delConfirmation">Delete</a>
                                 {{-- <a href="/products/{{ $product->id }}/edit">Edite</a> --}}
-                                <button type="button"  data-bs-toggle="modal"
+                                <button type="button" data-bs-toggle="modal"
                                     data-bs-target="#editModal{{ $product->id }}"
                                     style="background: none; border: none; color: #0d6efd; text-decoration: underline; cursor: pointer;"class="link-primary">
                                     Edit

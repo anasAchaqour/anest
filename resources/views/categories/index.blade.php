@@ -8,6 +8,27 @@
         <div class="col-md-12">
             <h4>Categories</h4>
         </div>
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                style="width: 50%; text-align: center;margin: auto">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session()->has('successDel'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                style="width: 30%; text-align: center;margin: auto">
+                {{ session('successDel') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session()->has('successUP'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                style="width: 30%; text-align: center;margin: auto">
+                {{ session('successUP') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
     </div>
 
     <hr>
@@ -16,8 +37,13 @@
             <div class="category-label">Categories</div>
             <div class="category-count">15</div>
         </div>
+
         {{-- modal add new categorie --}}
-        <div>
+        <a href="/categories/create">
+            <button class="btn btn-outline-dark m-3">Add new category</button>
+        </a>
+
+        {{-- <div>
             <button type="button" class="btn btn-outline-dark m-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 data-bs-whatever="@mdo">Add new category</button>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,7 +79,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- end modal add new categorie --}}
     </section>
@@ -81,7 +107,8 @@
                                 @foreach ($categories as $categorie)
                                     <tr>
                                         <td>{{ $categorie->id }}</td>
-                                        <td>{{ $categorie->cat_pic }}</td>
+                                        <td><img src="{{ url('storage/' . $categorie->cat_pic) }}" alt="category_img"
+                                                class="img-thumbnail" width="100"></td>
                                         <td>{{ $categorie->name }}</td>
                                         <td>{{ $categorie->description }}</td>
                                         <td>
@@ -89,14 +116,15 @@
                                                 data-bs-toggle="modal" data-bs-target="#delConfirmation">
                                                 <i class="bi bi-trash3-fill"></i>
                                             </button>
+                                            <a href="/categories/{{ $categorie->id }}/edit">
+                                                <button type="button" class="btn btn-outline-dark">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                            </a>
 
-                                            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
-                                                data-bs-target="#editModal" data-bs-whatever="@mdo">
-                                                <i class="bi bi-pencil"></i>
-                                            </button>
 
                                             {{-- modal edit categorie --}}
-                                            <div>
+                                            {{-- <div>
                                                 <div class="modal fade" id="editModal" tabindex="-1"
                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -140,7 +168,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             {{-- end modal edit categorie --}}
 
                                             <!-- Modal confirmation delete -->
@@ -151,8 +179,8 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Confirmation
                                                             </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             Are you sure you want to delete this categorie ?
@@ -160,7 +188,13 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-danger">Delete</button>
+                                                            <form method="post" action="/categories/{{ $categorie->id }}">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                            {{-- <button type="button" class="btn btn-danger">Delete</button> --}}
                                                         </div>
                                                     </div>
                                                 </div>

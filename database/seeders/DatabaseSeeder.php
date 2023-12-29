@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
         // ////////////////////////////////////////////////////////////////////////////////////
 
         // Call the SupplierFactory to create 5 suppliers
-        \App\Models\Supplier::factory(5)->create();
+        //\App\Models\Supplier::factory(10)->create();
 
         // Call the CategoryFactory to create 5 categories
-         \App\Models\Category::factory(10)->create();
+        //\App\Models\Category::factory(10)->create();
 
         // Call the ProductFactory to create 20 products (adjust the number based on your needs)
-        \App\Models\Product::factory(20)->create();
+           \App\Models\Product::factory(20)->create();
     }
 }
