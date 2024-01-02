@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap/dataTables.bootstrap5.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-    
+
     <title> @yield('title', 'index') </title>
     <livewire:styles />
 

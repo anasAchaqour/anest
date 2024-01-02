@@ -2,6 +2,7 @@
 use Livewire\Livewire;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
 use App\Models\category;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,8 @@ Route::post('/products/update/{id}', [ProductController::class, 'update']);
 
 // categories
 Route::resource('/categories', CategoryController::class);
+// suppliers
+Route::resource('/suppliers', SupplierController::class);
 
 
 
