@@ -113,7 +113,7 @@
                                                 class="img-thumbnail" width="100"></td>
                                         <td>{{ $categorie->name }}</td>
                                         <td>{{ $categorie->description }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-outline-danger" title=" Delete "
                                                 data-bs-toggle="modal" data-bs-target="#delConfirmation"
                                                 data-category-id="{{ $categorie->id }}">
