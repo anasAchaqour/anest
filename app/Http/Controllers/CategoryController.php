@@ -110,13 +110,18 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         //
+        //dd($id);
         $category = category::findOrFail($id);
 
-        // Get the image path
-        $imagePath = storage_path('app/public/' . $category->cat_pic);
-        // Check if the file exists before attempting to delete it
-        if (file_exists($imagePath)) {
-            unlink($imagePath); // Delete the file
+
+        if ($category->cat_pic !== 'category/default.png') {
+            // Get the image path
+            $imagePath = storage_path('app/public/' . $category->cat_pic);
+
+            // Check if the file exists before attempting to delete it
+            if (file_exists($imagePath)) {
+                unlink($imagePath); // Delete the file
+            }
         }
 
         // handle product

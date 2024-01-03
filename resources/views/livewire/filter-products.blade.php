@@ -118,8 +118,7 @@
                         <div class="card-footer" style="text-align: center">
                             {{-- <small class="text-muted"><a href="/products/delete/{{ $product->id }}">Delete</a> <a href="#">Edite</a></small> --}}
                             <small class="text-muted">
-                                <a title=" Delete " href="#" data-bs-toggle="modal"
-                                    data-bs-target="#delConfirmation">Delete</a>
+                                <a href="#" onclick="redirectToNewPage({{ $product->id }})">Delete</a>
                                 {{-- <a href="/products/{{ $product->id }}/edit">Edite</a> --}}
                                 <button type="button" data-bs-toggle="modal"
                                     data-bs-target="#editModal{{ $product->id }}"
@@ -128,7 +127,7 @@
                                 </button>
                             </small>
                             <!-- Modal confirmation delete -->
-                            <div class="modal fade" id="delConfirmation" tabindex="-1"
+                            {{-- <div class="modal fade" id="delConfirmation" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -152,7 +151,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- end Modal confirmation delete -->
                             {{-- edite modal --}}
                             <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -288,12 +287,15 @@
         });
 
 
-        //_________________________________ delete link for the modal button
+        //_________________________________ delete link 
         function redirectToNewPage(id) {
-            // Specify the URL of the new page
-            var newPageUrl = '/products/delete/' + id;
-            // Redirect to the new page
-            window.location.href = newPageUrl;
+            if (confirm("Are you sure you want to delete this categorie ?!")) {
+                // Specify the URL of the new page
+                var newPageUrl = '/products/delete/' + id;
+                // Redirect to the new page
+                window.location.href = newPageUrl;
+            }
+
         }
     </script>
 

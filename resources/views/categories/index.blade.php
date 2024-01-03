@@ -1,6 +1,8 @@
 @extends('layouts.index')
 @section('content')
     <link rel="stylesheet" href="assets/css/categories/index.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap/dataTables.bootstrap5.min.css') }}" />
+    <link rel="stylesheet" href="assets/css/bootstrap/dataTables.bootstrap5.min.css" />
 
 
 
@@ -113,7 +115,8 @@
                                         <td>{{ $categorie->description }}</td>
                                         <td>
                                             <button type="button" class="btn btn-outline-danger" title=" Delete "
-                                                data-bs-toggle="modal" data-bs-target="#delConfirmation">
+                                                data-bs-toggle="modal" data-bs-target="#delConfirmation"
+                                                data-category-id="{{ $categorie->id }}">
                                                 <i class="bi bi-trash3-fill"></i>
                                             </button>
                                             <a href="/categories/{{ $categorie->id }}/edit">
@@ -188,7 +191,8 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Close</button>
-                                                            <form method="post" action="/categories/{{ $categorie->id }}">
+                                                            <form method="post" action="/categories/{{ $categorie->id }}"
+                                                                id="deleteForm">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit"
@@ -220,4 +224,26 @@
             </div>
         </div>
     </div>
+
+    <script src="assets/js/bootstrap-jq/jquery-3.5.1.js"></script>
+    <script src="assets/js/bootstrap-jq/jquery.dataTables.min.js"></script>
+    <script src="assets/js/bootstrap-jq/dataTables.bootstrap5.min.js"></script>
+    <script>
+        // for data table
+        $(document).ready(function() {
+            $(".data-table").each(function(_, table) {
+                $(table).DataTable();
+            });
+        });
+
+        // for delete modal
+        $('#delConfirmation').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var categoryId = button.data('category-id'); // Extract category ID from data-* attributes
+            var modal = $(this);
+
+            // Update the form action attribute
+            modal.find('#deleteForm').attr('action', '/categories/' + categoryId);
+        });
+    </script>
 @endsection

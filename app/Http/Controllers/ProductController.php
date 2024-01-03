@@ -172,17 +172,22 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
+        //dd($id);
         // $coa = product::find($id);
         // $path1 = public_path('images/coaches/' . $coa->coa_pic);
         // if (File::exists($path1)) {
         //     File::delete($path1);
         // }
         $product = product::findOrFail($id);
-        // Get the image path
-        $imagePath = storage_path('app/public/' . $product->pro_pic);
-        // Check if the file exists before attempting to delete it
-        if (file_exists($imagePath)) {
-            unlink($imagePath); // Delete the file
+
+        if ($product->pro_pic !== 'product/default.png') {
+            // Get the image path
+            $imagePath = storage_path('app/public/' . $product->pro_pic);
+
+            // Check if the file exists before attempting to delete it
+            if (file_exists($imagePath)) {
+                unlink($imagePath); // Delete the file
+            }
         }
         // Delete the product
         $product->delete();

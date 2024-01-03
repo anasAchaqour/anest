@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> --}}
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap/dataTables.bootstrap5.min.css" />
+
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap/dataTables.bootstrap5.min.css') }}" />
+
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     <title> @yield('title', 'index') </title>
@@ -158,7 +158,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-3">
+                        <a href="/suppliers" class="nav-link px-3">
                             <span class="me-2"><i class="bi bi-box-seam"></i></span>
                             <span>Suppliers</span>
                         </a>
@@ -243,9 +243,7 @@
 
     <script src="assets/js/bootstrap-jq/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
-    <script src="assets/js/bootstrap-jq/jquery-3.5.1.js"></script>
-    <script src="assets/js/bootstrap-jq/jquery.dataTables.min.js"></script>
-    <script src="assets/js/bootstrap-jq/dataTables.bootstrap5.min.js"></script>
+
     <script src="assets/js/script.js"></script>
 
     <livewire:scripts />
