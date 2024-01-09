@@ -106,8 +106,10 @@
                             <hr>
                             Categorie : <span class="badge bg-secondary m-2 ">
                                 {{ optional($product->category)->name ? Str::limit($product->category->name, 10) : 'N/A' }}</span><br>
-                            Supplier : <span class="badge bg-secondary m-2 ">
-                                {{ Str::limit($product->supplier->name, 10) }}</span><br>
+                            Supplier: <span class="badge bg-secondary m-2">
+                                {{ optional($product->supplier)->name ? Str::limit($product->supplier->name, 10) : 'N/A' }}
+                            </span>
+
 
 
                             {{-- <div class="card-text" >{{ $product->description }} </div> --}}
@@ -287,7 +289,7 @@
         });
 
 
-        //_________________________________ delete link 
+        //_________________________________ delete link
         function redirectToNewPage(id) {
             if (confirm("Are you sure you want to delete this categorie ?!")) {
                 // Specify the URL of the new page
