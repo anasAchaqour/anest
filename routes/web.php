@@ -40,6 +40,8 @@ Route::post('/products/update/{id}', [ProductController::class, 'update']);
 Route::resource('/categories', CategoryController::class);
 // suppliers
 Route::resource('/suppliers', SupplierController::class);
+Route::get('suppliers-products', [SupplierController::class, 'showAllSuppliersWithProducts']);
+
 
 
 

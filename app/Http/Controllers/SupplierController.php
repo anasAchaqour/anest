@@ -20,6 +20,12 @@ class SupplierController extends Controller
         return view('suppliers.index', ['suppliers' => $suppliers]);
     }
 
+    public function showAllSuppliersWithProducts()
+    {
+        $suppliers = Supplier::with('products')->get();
+        return view('suppliers.suppliers-products', compact('suppliers'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -97,13 +103,13 @@ class SupplierController extends Controller
         // Find the supplier by ID
         $supplier = Supplier::findOrFail($id);
 
-         // handle product
-         $relatedProducts = product::where('supplier_id', $id)->get();
+        // handle product
+        $relatedProducts = product::where('supplier_id', $id)->get();
 
-         foreach ($relatedProducts as $product) {
-             $product->supplier_id = null; // or set to a different supplier_id
-             $product->save();
-         }
+        foreach ($relatedProducts as $product) {
+            $product->supplier_id = null; // or set to a different supplier_id
+            $product->save();
+        }
 
         // Delete the supplier
         $supplier->delete();

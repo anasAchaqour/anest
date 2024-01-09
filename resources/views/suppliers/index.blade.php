@@ -66,7 +66,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><b>Supplier-Products</b></h5>
                         <p class="card-text">
-                            Here you can see the Products of the suppliers . <a href="#"
+                            Here you can see the Products of the suppliers . <a href="{{ url('suppliers-products') }}"
                                 class="badge bg-light text-dark">Click Here</a>
 
                         </p>
