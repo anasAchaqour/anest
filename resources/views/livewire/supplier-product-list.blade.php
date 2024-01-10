@@ -7,63 +7,84 @@
 
 
 
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand " href="suppliers">
+                <button class="btn btn-sm btn-outline-secondary" type="button">Go Back</button>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <select class="form-select nav-item dropdown" aria-label="Default select example"
+                        wire:model.lazy="perPage" id="perPage">
+                        <option selected value="3">Show 3 per page</option>
+                        <option value="6">Show 6 per page</option>
+                        <option value="9">Show 9 per page</option>
+                        <option value="12">Show 12 per page</option>
+                    </select>
+
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">....</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <div class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search for Supplier . . ."
+                        aria-label="Search" wire:model.debounce.lazy="query" id="query" name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </div>
             </div>
         </div>
     </nav>
 
 
-    <h1 class="mt-4 mb-4">All Suppliers with Products</h1>
-    @foreach ($suppliers as $supplier)
+    <h3 class="mt-4 mb-4">Suppliers with Products</h3>
+
+    @forelse ($suppliers as $supplier)
         <div class="card mb-4">
             <div class="card-header">
                 <h2>{{ $supplier->name }}</h2>
             </div>
             <ul class="list-group list-group-flush">
-                @forelse ($supplier->products as $product)
-                    <li class="list-group-item">{{ $product->name }}</li>
-                @empty
-                    <li class="list-group-item">No products available for this supplier.</li>
-                @endforelse
+                <table class="table  text-center align-middle">
+                    <tbody>
+                        @forelse ($supplier->products as $product)
+                            <tr>
+                                <td>
+                                    <img src="{{ url('storage/' . $product->pro_pic) }}" class="img-thumbnail"
+                                        width="100" alt="Product Image">
+                                </td>
+                                <td>{{ $product->name }}</td>
+                                <td><b>Description : </b>
+                                    {{ $product->description }}
+                                </td>
+                                <td><b>Category : </b>
+                                    {{ optional($product->category)->name ?? 'N/A' }}
+                                </td>
+                                {{-- <td>
+                                    <a href="">
+                                        <button type="button" class="btn btn-outline-warning">Edit Thie Product</button>
+                                    </a>
+                                </td> --}}
+                            </tr>
+
+                        @empty
+                            <li class="list-group-item">No products available for this supplier 🚫.</li>
+                        @endforelse
+                    </tbody>
+
+                </table>
             </ul>
         </div>
-    @endforeach
+
+    @empty
+        <li class="list-group-item">No supplier found 🚫 .</li>
+    @endforelse
 
 
     <div class="d-flex justify-content-center">
