@@ -28,3 +28,32 @@ section
 
 
 
+
+/* ///////// pagination */
+/* Add this style block in the head section of your layout or in a separate CSS file */
+.pagination .page-item:not(.disabled) .page-link {
+    color: #212529;
+    /* Black color */
+    background-color: #ffffff;
+    /* Background color, if needed */
+    border-color: #212529;
+    /* Border color */
+}
+
+.pagination .page-item:not(.disabled) .page-link:hover {
+    color: #ffffff;
+    /* White color on hover */
+    background-color: #212529;
+    /* Background color on hover */
+    border-color: #212529;
+    /* Border color on hover */
+}
+
+.pagination .page-item.active .page-link {
+    color: #ffffff;
+    /* White color for active state */
+    background-color: #212529;
+    /* Background color for active state */
+    border-color: #212529;
+    /* Border color for active state */
+}

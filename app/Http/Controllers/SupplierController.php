@@ -22,7 +22,7 @@ class SupplierController extends Controller
 
     public function showAllSuppliersWithProducts()
     {
-        $suppliers = Supplier::with('products')->get();
+        $suppliers = Supplier::with('products')->paginate(3);
         return view('suppliers.suppliers-products', compact('suppliers'));
     }
 

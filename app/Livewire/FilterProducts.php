@@ -9,16 +9,11 @@ use App\Models\Product;
 
 class FilterProducts extends Component
 {
-
-
     public $query;
     public $byCategory;
     public $bySupplier;
     public $resetS = false;
     public $perPage = 9;
-
-
-
 
     public function render()
     {
