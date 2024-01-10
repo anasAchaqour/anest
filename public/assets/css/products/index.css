@@ -56,6 +56,22 @@ section {
     width: 150px;
 }
 
+
+
+.cardss{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 0px 0px 8px 8px;
+    -webkit-border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+
+    box-shadow: 0px 11px 11px -8px rgba(0, 0, 0, 0.68);
+    -webkit-box-shadow: 0px 11px 11px -8px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 11px 11px -8px rgba(0, 0, 0, 0.68);
+
+}
+
 /* //////////// */
 .main {
     justify-content: space-around;

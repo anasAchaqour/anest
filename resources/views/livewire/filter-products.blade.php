@@ -1,88 +1,68 @@
 <div>
 
 
-
     {{-- filter products --}}
-    <div>
+    <div class="container">
         <span class="badge rounded-pill bg-dark mb-2 fs-6 w-100">Here you can filter the products</span>
-        <div class="d-flex mb-2" style="">
-            <div class="search-input w-100">
-                <i class="fas fa-search fa-lg text-primary me-2"></i>
-                <input type="text" wire:model.debounce.lazy="query" id="query" class="form-control"
-                    placeholder="Search For a Product...">
-                <button class="btn btn-primary" type="button"><i class="bi bi-search"></i>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
 
-            </div>
-
-
-
-        </div>
-        <div class="d-flex justify-content-around  mb-2 filter">
-            <div>
-                <button type="button" class="btn btn-primary" wire:click="resetSearch" id="resetS">
+                <button class="btn btn-sm btn-outline-secondary" type="button" wire:click="resetSearch" id="resetS">
                     <i class="bi bi-arrow-clockwise"></i>
                     Reset Search
                 </button>
-            </div>
-            <div class="">
-                <select wire:model.lazy='byCategory' id="byCategory" class="custom-select">
-                    <option selected>Categories</option>
-                    @foreach ($categories as $categorie)
-                        <option value="{{ $categorie->id }}">
-                            {{ $categorie->name }} </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="">
-                <select wire:model.lazy='bySupplier' id="bySupplier" class="custom-select">
-                    <option selected>Suppliers</option>
-                    @foreach ($suppliers as $supplier)
-                        <option value="{{ $supplier->id }}">
-                            {{ $supplier->name }} </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="">
-                <select wire:model='orderBy' class="custom-select">
-                    <option selected>Order By</option>
-                    <option value="price">Price</option>
-                    <option value="name">Name</option>
-                    <option value="stock">Stock</option>
-
-                </select>
-            </div>
-
-            <div>
-                {{-- <button type="button" class="btn btn-primary">
-                    <b>show</b>
-                    <select wire:model.lazy='perPage' id="perPage" class="custom-select w-auto">
-                        <option value="6">6</option>
-                        <option value="9" selected>9</option>
-                        <option value="12">12</option>
-                        <option value="15">15</option>
-                        <option value="18">18</option>
-                    </select>
-                    <b>Per Page</b>
-
-                </button> --}}
-                <div class="select-container p-1">
-                    <label for="perPage" class="select-label">Show</label>
-                    <select wire:model.lazy="perPage" id="perPage" class="custom-select w-auto">
-                        <option value="6">6</option>
-                        <option value="9" selected>9</option>
-                        <option value="12">12</option>
-                        <option value="15">15</option>
-                        <option value="18">18</option>
-                    </select>
-                    Per Page
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="select-container p-1">
+                            <select wire:model.lazy='bySupplier' id="bySupplier" class="custom-select">
+                                <option selected>Suppliers</option>
+                                @foreach ($suppliers as $supplier)
+                                    <option value="{{ $supplier->id }}">
+                                        {{ $supplier->name }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="select-container p-1">
+                            <select wire:model.lazy='byCategory' id="byCategory" class="custom-select">
+                                <option selected>Categories</option>
+                                @foreach ($categories as $categorie)
+                                    <option value="{{ $categorie->id }}">
+                                        {{ $categorie->name }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="select-container p-1">
+                            <label for="perPage" class="select-label">Show</label>
+                            <select wire:model.lazy="perPage" id="perPage" class="custom-select w-auto">
+                                <option value="6">6</option>
+                                <option value="9" selected>9</option>
+                                <option value="12">12</option>
+                                <option value="15">15</option>
+                                <option value="18">18</option>
+                            </select>
+                            Per Page
+                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search for Products . . ."
+                            aria-label="Search" wire:model.debounce.lazy="query" id="query" name="search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </div>
                 </div>
             </div>
-
-
-        </div>
+        </nav>
 
     </div>
+
+
     {{-- end filter products --}}
 
     {{-- ////////// --}}
