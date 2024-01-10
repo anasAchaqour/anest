@@ -11,6 +11,17 @@
 
 
 
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4>/Categories/{{ $category->id }}/edit</h4>
+        </div>
+    </div>
+
+    <hr>
+
+
+
     <div class="w-100 h-100 d-flex align-items-center justify-content-center formDiv">
         <div class="w-75">
             <form class="w-100" action="/categories/{{ $category->id }}" method="POST" enctype="multipart/form-data">

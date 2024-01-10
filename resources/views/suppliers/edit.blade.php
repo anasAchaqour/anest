@@ -12,7 +12,13 @@
 
 
 
+    <div class="row">
+        <div class="col-md-12">
+            <h4>/Suppliers/{{$supplier->id}}/edit</h4>
+        </div>
+    </div>
 
+    <hr>
 
     <div class="w-100 h-100 d-flex align-items-center justify-content-center formDiv">
         <div class="w-75">
@@ -20,7 +26,7 @@
                 @csrf
                 @method('put')
                 <div class="p-3 text-center" style="margin-bottom: 20px">
-                    <h3 class="modal-title" id="exampleModalLabel">Update supplier {{ $supplier->id }}</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Update supplier number {{ $supplier->id }}</h3>
                 </div>
                 <!-- Your form content -->
                 <div class="input-group mb-3">
@@ -54,7 +60,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                        id="floatingInput" placeholder="name@example.com" name="email" value="{{$supplier->email}}">
+                        id="floatingInput" placeholder="name@example.com" name="email" value="{{ $supplier->email }}">
                     <label for="floatingInput">Email address</label>
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>

@@ -9,7 +9,13 @@
         }
     </style>
 
+    <div class="row">
+        <div class="col-md-12">
+            <h4>/Suppliers/create</h4>
+        </div>
+    </div>
 
+    <hr>
 
     <div class="w-100 h-100 d-flex align-items-center justify-content-center formDiv">
         <div class="w-75">
@@ -42,7 +48,8 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Phone number</span>
                     <input type="text" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}"
-                        placeholder="enter the Phone number" aria-label="" aria-describedby="basic-addon1" name="phone_number">
+                        placeholder="enter the Phone number" aria-label="" aria-describedby="basic-addon1"
+                        name="phone_number">
                     @error('phone_number')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

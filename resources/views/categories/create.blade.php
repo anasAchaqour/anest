@@ -10,6 +10,13 @@
     </style>
 
 
+    <div class="row">
+        <div class="col-md-12">
+            <h4>/Categories/create</h4>
+        </div>
+    </div>
+
+    <hr>
 
     <div class="w-100 h-100 d-flex align-items-center justify-content-center formDiv">
         <div class="w-75">
@@ -52,6 +59,4 @@
             </form>
         </div>
     </div>
-
-
 @endsection

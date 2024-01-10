@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h4>Categories</h4>
+            <h4>/Categories</h4>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert"
