@@ -1,6 +1,7 @@
 <?php
 use Livewire\Livewire;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Models\category;
@@ -41,6 +42,9 @@ Route::resource('/categories', CategoryController::class);
 // suppliers
 Route::resource('/suppliers', SupplierController::class);
 Route::get('suppliers-products', [SupplierController::class, 'showAllSuppliersWithProducts']);
+
+// clients
+Route::resource('/clients', ClientController::class);
 
 
 

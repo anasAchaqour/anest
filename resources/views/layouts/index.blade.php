@@ -164,9 +164,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-3">
+                        <a href="/clients" class="nav-link px-3">
                             <span class="me-2"><i class="bi bi-person-lines-fill"></i></span>
-                            <span>Customers</span>
+                            <span>Clients</span>
                         </a>
                     </li>
                     <li>
@@ -243,7 +243,7 @@
 
 
 
-    
+
     {{-- /* spinner */ --}}
 
    <!-- Overlay for Opacity -->
