@@ -238,7 +238,20 @@
         </div>
     </main>
     <!-- end main -->
+
     <div id="scrollToTopElement" title="Go to top">&#9650; Top</div>
+
+
+
+    
+    {{-- /* spinner */ --}}
+
+   <!-- Overlay for Opacity -->
+   <div id="overlay"></div>
+   <!-- Loading Spinner -->
+   <div id="loading-spinner" class="spinner"></div>
+
+
 
 
     <script src="assets/js/bootstrap-jq/bootstrap.bundle.min.js"></script>

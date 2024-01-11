@@ -62,3 +62,26 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.scrollTop = 0;
     };
 });
+
+
+
+/* spinner */
+document.addEventListener('DOMContentLoaded', function () {
+    // Show the overlay and spinner
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('loading-spinner').style.display = 'block';
+
+    // Hide the loading spinner and overlay once the page is fully loaded
+    setTimeout(function () {
+        document.getElementById('overlay').style.opacity = '0';
+        document.getElementById('loading-spinner').style.opacity = '0';
+
+        setTimeout(function () {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('loading-spinner').style.display = 'none';
+
+            // Show the page content
+            document.getElementById('content').style.display = 'block';
+        }, 500); // Add a delay to match the duration of the transition
+    }, 500); // Adjust the delay in milliseconds
+});
