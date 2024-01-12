@@ -76,7 +76,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><b>client-Products</b></h5>
                         <p class="card-text">
-                            Here you can see the Products of the clients . <a href="{{ url('clients-products') }}"
+                            Here you can see the Products of the clients . <a href="#"
                                 class="badge bg-light text-dark">Click Here</a>
 
                         </p>
@@ -96,13 +96,13 @@
 
     <hr>
 
-    
+
     <!-- =======  Data-Table  = Start  ========================== -->
     <div class="container-fluid p-3">
         <div class="row">
             <div class="col-12">
                 <div class="data_table">
-                    <table id="example" class="table table-striped table-bordered">
+                    <table id="example" class="table table-striped table-bordered text-center align-middle mt-2">
                         <thead class="table-dark">
                             <tr>
                                 <th></th>
@@ -132,7 +132,7 @@
                                             data-client-id="{{ $client->id }}">
                                             <i class="bi bi-trash3-fill"></i>
                                         </button>
-                                        <a href="/clients/{{ $client->id }}/edit">
+                                        <a href="/clients/{{ $client->user->id }}/edit">
                                             <button type="button" class="btn btn-outline-dark">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
@@ -155,7 +155,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <form method="post" action="/clients/{{ $client->id }}"
+                                                        <form method="post" action="/clients/{{ $client->user->id }}"
                                                             id="deleteForm">
                                                             @csrf
                                                             @method('delete')

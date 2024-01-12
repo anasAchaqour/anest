@@ -44,7 +44,8 @@ Route::resource('/suppliers', SupplierController::class);
 Route::get('suppliers-products', [SupplierController::class, 'showAllSuppliersWithProducts']);
 
 // clients
-Route::resource('/clients', ClientController::class);
+Route::resource('clients', ClientController::class);
+
 
 
 

@@ -158,11 +158,44 @@
                         </div>
                     </li>
                     <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#sups">
+                            <span class="me-2"><i class="bi bi-shop-window"></i></span>
+                            <span>Suppliers</span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="collapse" id="sups">
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="/suppliers" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-calculator-fill"></i></i></span>
+                                        <span>List of Suppliers</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/suppliers-products" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-list-ol"></i></i></span>
+                                        <span>Suppliers products</span>
+                                    </a>
+                                </li>
+                                {{-- <li>
+                                    <a href="#" class="nav-link px-3">
+                                        <span class="me-2"><i class="bi bi-shop-window"></i></i></span>
+                                        <span>Inventory</span>
+                                    </a>
+                                </li> --}}
+                            </ul>
+                        </div>
+                    </li>
+                    {{-- <li>
                         <a href="/suppliers" class="nav-link px-3">
                             <span class="me-2"><i class="bi bi-box-seam"></i></span>
                             <span>Suppliers</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="/clients" class="nav-link px-3">
                             <span class="me-2"><i class="bi bi-person-lines-fill"></i></span>
