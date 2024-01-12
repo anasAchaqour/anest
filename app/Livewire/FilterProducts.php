@@ -19,7 +19,7 @@ class FilterProducts extends Component
     {
         $categories = Category::all();
         $suppliers = Supplier::all();
-        $products = Product::query();
+        $products = Product::with('stock');
         $proCount = Product::count();
 
         // Filtering by category

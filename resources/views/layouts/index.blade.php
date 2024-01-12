@@ -203,6 +203,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/stock" class="nav-link px-3">
+                            <span class="me-2"><i class="bi bi-person-lines-fill"></i></span>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#" class="nav-link px-3">
                             <span class="me-2"><i class="bi bi-receipt"></i></span>
                             <span>Invoices</span>

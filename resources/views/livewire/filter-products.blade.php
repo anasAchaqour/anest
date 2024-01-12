@@ -80,7 +80,7 @@
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <h6 class="d-flex justify-content-between"><span
                                     class="badge bg-secondary">{{ $product->price }} $</span>
-                                <u>{{ $product->stock }}
+                                <u> {{ optional($product->stock)->quantity ?? 'N/A' }}
                                     pcs</u>
                             </h6>
                             <hr>
@@ -135,6 +135,7 @@
                                 </div>
                             </div> --}}
                             <!-- end Modal confirmation delete -->
+
                             {{-- edite modal --}}
                             <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true" id="editModal{{ $product->id }}">
@@ -185,7 +186,7 @@
                                                     class="form-control {{ $errors->has('stock') ? 'is-invalid' : '' }}"
                                                     placeholder="enter the Stocke" aria-label=""
                                                     aria-describedby="basic-addon1" name="stock"
-                                                    value="{{ $product->stock }}">
+                                                    value="{{ optional($product->stock)->quantity ?? 'N/A' }}">
                                                 @error('stock')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror

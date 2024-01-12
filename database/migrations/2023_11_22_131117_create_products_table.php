@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->integer('stock');
+            // $table->integer('stock');
             $table->string('pro_pic')->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');

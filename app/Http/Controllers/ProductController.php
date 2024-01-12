@@ -6,6 +6,7 @@ use App\Models\product;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
 use App\Models\category;
+use App\Models\Stock;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,68 +46,44 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            // 'pro_pic' => 'bail|image|mimes:png,jpg,jpeg,svg',
-            //'pro_pic' => 'bail',
             'category_id' => 'required',
             'supplier_id' => 'required',
         ]);
 
-        /*****************************************************************/
-        //Save photo in the folder
-        // $newImageName = rand(1000, 9999) . '_' . time() . '_' . $request->name . '.' . $request->pro_pic->extension();
-        // dd($newImageName);
-        // $request->pro_pic->move(public_path('images/products'), $newImageName);
-        // Check if a file was uploaded
-
+        // Handle product image upload
         if ($request->hasFile('pro_pic')) {
-            // If a file was uploaded, store it and get the path
             $newImageName = $request->file('pro_pic')->store('product', 'public');
         } else {
-            // If no file was uploaded, use the default image path
-            $newImageName = 'product/default.png'; // Adjust the default image filename/path
+            $newImageName = 'product/default.png';
         }
-        //dd($newImageName);
-        /*****************************************************************/
 
+        // Create a new product
+        $newProduct = new Product([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'pro_pic' => $newImageName,
+            'category_id' => $request->category_id,
+            'supplier_id' => $request->supplier_id,
+        ]);
+        $newProduct->save();
 
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'bail|string',
-        //     'description' => 'bail|required|string',
-        //     'price' => 'bail|required|numeric',
-        //     'stock' => 'bail|required|numeric',
-        //     'pro_pic' => 'bail',
-        //     'category_id' => 'required|numeric',
-        //     'supplier_id' => 'bail|required|numeric'
-        // ]);
+        // Retrieve the newly created product's ID
+        $productId = $newProduct->id;
 
-        /*****************************************************************/
-        // product::create([
-        //     'name' => $request->input('name'),
-        //     'description' => $request->input('description'),
-        //     'price' => $request->input('price'),
-        //     'stock' => $request->input('stock'),
-        //     // 'pro_pic' => $newImageName,
-        //     'category_id' => $request->input('category_id'),
-        //     'supplier_id' => $request->input('supplier_id'),
-        // ]);
+        // Create a new stock record
+        $newStock = new Stock([
+            'product_id' => $productId,
+            'quantity' => $request->stock,
+        ]);
+        $newStock->save();
 
-        $createNewProduct = new product();
-        $createNewProduct->name = $request->name;
-        $createNewProduct->description = $request->description;
-        $createNewProduct->price = $request->price;
-        $createNewProduct->stock = $request->stock;
-        $createNewProduct->pro_pic = $newImageName;
-        $createNewProduct->category_id = $request->category_id;
-        $createNewProduct->supplier_id = $request->supplier_id;
-        $createNewProduct->save();
-
-        return redirect('/products')->with('success', 'product added successfully.');
+        return redirect('/products')->with('success', 'Product added successfully.');
     }
 
     /**
@@ -130,42 +107,46 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
         $request->validate([
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            // 'pro_pic' => 'bail|image|mimes:png,jpg,jpeg,svg',
-            //'pro_pic' => 'bail',
             'category_id' => 'required',
             'supplier_id' => 'required',
         ]);
 
-        $product = product::find($id);
+        $product = Product::find($id);
+
         // Update product image if a new file is provided
         $oldImagePath = $product->pro_pic;
-        if ($request->pro_pic == null) {
-            $newImageName = $oldImagePath;
-        } else {
+        if ($request->hasFile('pro_pic')) {
             // Delete the old image
             if ($oldImagePath != 'product/default.png' && Storage::exists('public/' . $oldImagePath)) {
                 Storage::delete('public/' . $oldImagePath);
             }
+
+            // Store the new image
             $newImageName = $request->file('pro_pic')->store('product', 'public');
+            $product->pro_pic = $newImageName;
         }
 
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->pro_pic = $newImageName;
         $product->category_id = $request->category_id;
         $product->supplier_id = $request->supplier_id;
         $product->save();
 
+        // Update or create stock information
+        $stock = Stock::updateOrCreate(
+            ['product_id' => $product->id],
+            ['quantity' => $request->stock]
+        );
+
         return redirect('/products')->with('successUP', 'Product updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
