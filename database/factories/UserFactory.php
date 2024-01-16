@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // Default password is 'password', you can change it as needed
-            'role' => $this->faker->randomElement([0, 1]), // Randomly selects 0 or 1 for the 'role' field
+            'role' => $this->faker->randomElement([0, 1, 2]),
             'remember_token' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),

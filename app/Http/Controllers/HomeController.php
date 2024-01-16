@@ -24,7 +24,8 @@ class HomeController extends Controller
 
     public function adminHome()
     {
-        return view('home',["msg"=>"Hello! I am admin"]);
+        // return view('home',["msg"=>"Hello! I am admin"]);
+        return view('test');
     }
 
     /**
@@ -34,7 +35,7 @@ class HomeController extends Controller
      */
     public function warehouse_staffHome()
     {
-        return view('home',["msg"=>"Hello! I am warehouse_staff"]);
+        return view('warehouse-staff-pages.test');
     }
 
 
@@ -45,6 +46,6 @@ class HomeController extends Controller
      */
     public function clientHome()
     {
-        return view('home',["msg"=>"Hello! I am client"]);
+        return view('client-pages.test');
     }
 }
