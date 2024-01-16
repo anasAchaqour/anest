@@ -2,9 +2,11 @@
 use Livewire\Livewire;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Models\category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +52,18 @@ Route::resource('clients', ClientController::class);
 
 
 
+Auth::routes();
+Route::middleware(['auth','user-role:admin'])->group(function()
+{
+    Route::get("admin/home",[HomeController::class, 'adminHome'])->name("home.admin");
+});
+
+Route::middleware(['auth','user-role:warehouse_staff'])->group(function()
+{
+    Route::get("warehouse_staff/home",[HomeController::class, 'warehouse_staffHome'])->name("home.warehouse_staff");
+});
+
+Route::middleware(['auth','user-role:client'])->group(function()
+{
+    Route::get("client/home",[HomeController::class, 'clientHome'])->name("home.client");       
+});
