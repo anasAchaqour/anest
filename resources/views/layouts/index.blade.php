@@ -69,15 +69,21 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/admins">
+                                    Admins
+                                </a>
+
+                                <hr class="dropdown-divider">
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+
                             </div>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a href="#">
@@ -285,7 +291,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link px-3">
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="nav-link px-3">
                             <span class="me-2"><i class="bi bi-box-arrow-left"></i></span>
                             <span>{{ __('Logout') }}</span>
                         </a>
@@ -338,7 +346,7 @@
     <script src="assets/js/bootstrap-jq/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
 
-    <script src="assets/js/script.js"></script>
+
 
     <livewire:scripts />
     <script src="{{ asset('vendor/livewire/livewire.js') }}" defer></script>
@@ -353,6 +361,8 @@
             return new bootstrap.Popover(popoverTriggerEl)
         })
     </script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+
 
 
 </body>

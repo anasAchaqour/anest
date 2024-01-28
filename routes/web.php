@@ -3,6 +3,7 @@
 use Livewire\Livewire;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\handl_admins;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
@@ -65,6 +66,9 @@ Route::middleware(['auth', 'user-role:admin'])->group(function () {
 
     // clients
     Route::resource('clients', ClientController::class);
+
+    // admins
+    Route::get('/admins', [handl_admins::class, 'index'])->name('products');
 });
 
 
