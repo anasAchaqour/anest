@@ -68,7 +68,7 @@ Route::middleware(['auth', 'user-role:admin'])->group(function () {
     Route::resource('clients', ClientController::class);
 
     // admins
-    Route::get('/admins', [handl_admins::class, 'index'])->name('products');
+    Route::resource('/admins', handl_admins::class);
 });
 
 

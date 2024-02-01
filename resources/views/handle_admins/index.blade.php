@@ -30,7 +30,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h4>/admins</h4>
+            <h4>/Admins</h4>
         </div>
         @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert"
@@ -215,14 +215,13 @@
         });
         // =============  Data Table - (End) ================= //
 
-        // // for delete modal
-        // $('#delConfirmation').on('show.bs.modal', function(event) {
-        //     var button = $(event.relatedTarget); // Button that triggered the modal
-        //     var clientId = button.data('client-id'); // Extract category ID from data-* attributes
-        //     var modal = $(this);
-
-        //     // Update the form action attribute
-        //     modal.find('#deleteForm').attr('action', '/clients/' + clientId);
-        // });
+         // for delete modal
+         $('#delConfirmation').on('show.bs.modal', function(event) {
+             var button = $(event.relatedTarget); // Button that triggered the modal
+             var adminId = button.data('admin-id'); // Extract category ID from data-* attributes
+             var modal = $(this)
+             // Update the form action attribute
+             modal.find('#deleteForm').attr('action', '/admins/' + adminId);
+         });
     </script>
 @endsection
