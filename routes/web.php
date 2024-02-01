@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/', function () {
+    return view('home.index');
+});
 
 
 // products
@@ -49,9 +51,9 @@ Auth::routes();
 // admin routes
 Route::middleware(['auth', 'user-role:admin'])->group(function () {
     Route::get('/dashboard/home', [HomeController::class, 'adminHome'])->name("home.admin");
-    Route::get('/', function () {
-        return redirect()->route('home.admin');
-    });
+    //Route::get('/', function () {
+      //  return redirect()->route('home.admin');
+    //});
     // products
     Route::get('/products', [ProductController::class, 'index'])->name('products');
     Route::post('/products/create', [ProductController::class, 'store']);
