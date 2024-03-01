@@ -57,7 +57,7 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Phone number</span>
                     <input type="text" class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
-                        placeholder="enter the Phone number" aria-label="" aria-describedby="basic-addon1" name="contact" value="{{ old('name') }}">
+                        placeholder="enter the Phone number" aria-label="" aria-describedby="basic-addon1" name="contact" value="{{ old('contact') }}">
                     @error('contact')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

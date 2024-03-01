@@ -18,6 +18,13 @@
 </head>
 
 <body>
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert"
+            style="width: 50%; text-align: center;margin: auto">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <div class="main">
 
@@ -45,28 +52,29 @@
 
                             </div>
                             @error('email')
-                                    <span style="color: rgb(145, 13, 13)">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <span style="color: rgb(145, 13, 13)">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" id="your_pass" placeholder="Password"
                                     class="@error('password') is-invalid @enderror" name="password" required
                                     autocomplete="current-password" />
                                 @error('password')
-                                    <span >
+                                    <span>
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                                 @error('error')
-                                    <span >
+                                    <span>
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="remember" id="remember-me" class="agree-term" {{ old('remember') ? 'checked' : '' }}/>
+                                <input type="checkbox" name="remember" id="remember-me" class="agree-term"
+                                    {{ old('remember') ? 'checked' : '' }} />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
                                     me</label>
                             </div>

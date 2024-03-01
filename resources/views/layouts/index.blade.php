@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap/dataTables.bootstrap5.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> --}}
-    <link rel="stylesheet" href="assets/assetsHome/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
 
-    <link rel="stylesheet" href="assets/assetsHome/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-    <link rel="stylesheet" href="{{ asset('assets/assetsHome/css/bootstrap/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
 
-    <link rel="stylesheet" href="{{ asset('assets/assetsHome/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     <title> @yield('title', 'index') </title>
-    <script src="assets/assetsHome/js/bootstrap-jq/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap-jq/bootstrap.bundle.min.js"></script>
     <livewire:styles />
 
 </head>
@@ -343,7 +343,7 @@
 
 
 
-    <script src="assets/assetsHome/js/bootstrap-jq/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap-jq/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
 
 
@@ -361,7 +361,7 @@
             return new bootstrap.Popover(popoverTriggerEl)
         })
     </script>
-    <script src="{{ asset('assets/assetsHome/js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 
 
 
